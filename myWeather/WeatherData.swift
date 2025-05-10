@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct WeatherData: Codable {
+    let temperature: Double
+    let humidity: Int
+    let windSpeed: Double
+    let condition: String
+}

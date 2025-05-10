@@ -8,6 +8,10 @@
 import Foundation
 
 class Location {
-    // Stores all weather data relating to the location provided.
-    var name: String
+    let name: String
+    var currentWeather: WeatherData?
+    
+    init(name: String) {
+        self.name = name
+    }
 }

@@ -7,8 +7,21 @@
 
 import Foundation
 
-print("Hello, World!")
-
-static func displayMenu(Location currentWeather) {
+func main() async {
+    let weatherService = WeatherService()
+    let location = Location(name: "Calgary")
     
+    do {
+        let weather = try await weatherService.fetchWeather(for: location)
+        location.currentWeather = weather
+        print("Weather in \(location.name):")
+        print("Temperature: \(weather.temperature)°C")
+        print("Humidity: \(weather.humidity)%")
+        print("Wind Speed: \(weather.windSpeed) km/h")
+        print("Condition: \(weather.condition)")
+    } catch {
+        print("Error: \(error.localizedDescription)")
+    }
 }
+
+await main()
