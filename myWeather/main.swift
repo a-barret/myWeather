@@ -10,11 +10,13 @@ import Foundation
 
 func getUnitPreference() -> String {
     print("Select IMPERIAL units (Fahrenheit and Miles per hour) or METRIC units (Celsius and Kilometers per hour) (IMPERIAL/METRIC): ", terminator: "")
+    // If the user enters nothing then it will default to imperial
     guard let preference = readLine()?.lowercased(), !preference.isEmpty else {
         print("Unknown response. Imperial selected by default")
         return "imperial"
     }
     
+    // If the user enters something other than imperial or metric, it defaults to imperial.
     if preference != "imperial" && preference != "metric" {
         print("Unknown response. Imperial selected by default")
         return "imperial"
@@ -26,11 +28,13 @@ func getUnitPreference() -> String {
 func getMenuChoice() -> Int {
     while true {
         print("Enter your choice (0-2): ", terminator: "")
+        // Handles if the user enters a blank input.
         guard let input = readLine(), !input.isEmpty else {
             print("Invalid input. Please try again.")
             continue
         }
         
+        // Checks if the input is a integer
         if let choice = Int(input) {
             return choice
         } else {
@@ -58,6 +62,7 @@ func main() async {
         speedUnits = "km/h"
         tempUnits = "C"
     }
+    // Changes the units sent in the weather api request
     let weatherService = WeatherService()
     weatherService.SetUnitPreference(unitType: unitPreference)
     
