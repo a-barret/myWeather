@@ -10,13 +10,14 @@ import Foundation
 class WeatherService {
     private let apiKey = "d23393088a0ac2a3124badfe8fa0e30a"
     private let baseURL = "https://api.openweathermap.org/data/2.5/weather"
+    private var unitPreference = ""
     
     enum WeatherError: Error {
         case requestFailed(String)
     }
     
     func fetchWeather(for location: Location) async throws -> WeatherData {
-        let query = "q=\(location.name)&appid=\(apiKey)&units=metric"
+        let query = "q=\(location.name)&appid=\(apiKey)&units=\(unitPreference)"
         guard let url = URL(string: "\(baseURL)?\(query)") else {
             throw WeatherError.requestFailed("Invalid URL")
         }
@@ -39,5 +40,9 @@ class WeatherService {
             windSpeed: responseData.wind.speed,
             condition: responseData.weather.first?.description ?? "Unknown"
         )
+    }
+    
+    public func SetUnitPreference(unitType: String) {
+        unitPreference = unitType
     }
 }
