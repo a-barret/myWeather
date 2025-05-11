@@ -4,7 +4,7 @@ To learn how to write programs in the swift language, I chose to write a simple 
 
 I chose to write this software to increase my understanding of how to write in the swift language as well as gain some experience calling APIs.
 
-[Weather Application Demonstration](https://youtu.be/W4YZgcngfr8)
+[Weather Application Demonstration Video](https://youtu.be/W4YZgcngfr8)
 
 # Development Environment
 
