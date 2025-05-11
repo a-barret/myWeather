@@ -8,9 +8,9 @@
 import Foundation
 
 class WeatherService {
-    private let apiKey = "d23393088a0ac2a3124badfe8fa0e30a"
+    private let apiKey = "" // Enter your own api key for openweathermap.org
     private let baseURL = "https://api.openweathermap.org/data/2.5/weather"
-    private var unitPreference = ""
+    private var unitPreference = "imperial"
     
     enum WeatherError: Error {
         case requestFailed(String)
